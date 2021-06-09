@@ -35,6 +35,7 @@ div {
   }
   p {
     color: rgba($text_color, 0.6);
+    line-height: 1.1em;
   }
 }
 </style>
