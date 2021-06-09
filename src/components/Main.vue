@@ -56,25 +56,5 @@ main {
       padding: 10px;
     }
   }
-
-  /*  .gallery {
-  display: flex;
-  flex-wrap: wrap;
-  height: 100%;
-  width: 70%;
-  margin: 0 auto;
-  padding: 20px 0;
-  overflow-y: auto;
-
-  .album {
-    width: 20%;
-    min-width: 155px;
-    min-height: 290px;
-    height: calc(100% / 2);
-    flex-shrink: 0;
-    padding: 10px 15px;
-    margin: auto;
-  }
-    } */
 }
 </style>

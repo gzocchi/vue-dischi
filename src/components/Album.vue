@@ -1,6 +1,6 @@
 <template>
   <div>
-    <img :src="item.poster" alt="item.title" />
+    <img :src="item.poster" alt="item.title" class="img-fluid" />
     <h3 class="my-3">{{ item.title }}</h3>
     <p>
       {{ item.author }} <br />
@@ -23,10 +23,6 @@ div {
   height: 100%;
   padding: 10px;
   background-color: $bg_light;
-
-  img {
-    width: 100%;
-  }
 
   h3 {
     font-weight: 700;

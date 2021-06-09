@@ -1,18 +1,16 @@
 <template>
   <header class="container-fluid">
-    <!-- <img :src="logo" alt="Logo"> -->
-    <img src="../assets/img/spotify.png" alt="Logo">
+    <!-- <img :src="logo" alt="Logo" class="img-fluid"> -->
+    <!-- <img src="../assets/img/spotify.png" alt="Logo"> -->
+    <div>
+      <a href="#"></a>
+    </div>
   </header>
 </template>
 
 <script>
 export default {
   name: "Header",
-  data() {
-      return {
-        //   logo: "../assets/img/spotify.png",
-      }
-  },
 };
 </script>
 
@@ -23,9 +21,22 @@ header {
   height: $header_h;
   background-color: $bg_light;
 
-  img{
+  div {
+    height: $header_h;
+    width: $header_h;
+    background-image: url(#{$imagePath}/spotify.png);
+    background-size: 90%;
+    background-position: center;
+    background-repeat: no-repeat;
+    
+    a {
+      display: block;
       height: 100%;
-      padding: 5px;
+    }
   }
+  // img {
+  //   height: 100%;
+  //   padding: 5px;
+  // }
 }
 </style>
