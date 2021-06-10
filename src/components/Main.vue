@@ -12,11 +12,20 @@
         </div>
       </div>
     </section>
-    <AlbumFilter
-      class="sticky-top"
-      :genres="musicGenre"
-      @genreSelected="genreSelected"
-    />
+    <div class="filter_select sticky-top m-2">
+      <AlbumFilter
+        class="m-2"
+        labelFilter="Genere"
+        :options="musicGenre"
+        @filter="genreSelected"
+      />
+      <AlbumFilter
+        class="m-2"
+        labelFilter="Artista"
+        :options="musicArtist"
+        @filter="artistSelected"
+      />
+    </div>
   </main>
 </template>
 
@@ -39,24 +48,33 @@ export default {
       apiUrl: "https://flynn.boolean.careers/exercises/api/array/music",
       albums: [],
       musicGenre: [],
+      musicArtist: [],
       currentGenre: "",
+      currentArtist: "",
     };
   },
   computed: {
     filter() {
-      if (this.currentGenre == "") {
+      if (this.currentGenre == "" && this.currentArtist == "") {
         return this.albums;
       }
       const newAlbum = this.albums.filter((element) => {
-        return element.genre.includes(this.currentGenre);
+        let genre = element.genre;
+        let artist = element.author;
+        return (
+          genre.includes(this.currentGenre) &&
+          artist.includes(this.currentArtist)
+        );
       });
       return newAlbum;
     },
   },
   methods: {
     genreSelected(genre) {
-      console.log(genre);
       this.currentGenre = genre;
+    },
+    artistSelected(artist) {
+      this.currentArtist = artist;
     },
   },
   created() {
@@ -67,6 +85,9 @@ export default {
         this.albums.forEach((element) => {
           if (!this.musicGenre.includes(element.genre)) {
             this.musicGenre.push(element.genre);
+          }
+          if (!this.musicArtist.includes(element.author)) {
+            this.musicArtist.push(element.author);
           }
         });
         // this.$emit('musicGenre', this.musicGenre);
@@ -95,9 +116,9 @@ main {
   }
 
   // DEBUG
-  .filter {
+  .filter_select {
     position: absolute;
-    top: 5px;
+    top: $header_h;
     right: 20px;
   }
 }

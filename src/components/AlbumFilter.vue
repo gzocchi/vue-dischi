@@ -1,20 +1,15 @@
 <template>
   <div class="filter d-flex align-items-center">
     <select
-      class="form-select"
-      aria-label="Default select example"
-      v-model="selectedGenre"
-      @change="$emit('genreSelected', selectedGenre)"
+      class="form-select form-select-sm"
+      aria-label=".form-select-sm example"
+      v-model="filterSelection"
+      @change="$emit('filter', filterSelection)"
     >
-      <option value="">Genere</option>
-      <option v-for="(gener, index) in genres" :key="index" :value="gener"
-        >{{ gener }}
+      <option selected value="">{{ labelFilter }}</option>
+      <option v-for="(option, index) in options" :key="index" :value="option"
+        >{{ option }}
       </option>
-
-      <!-- <option @click="$emit('genreSelected', selectedGenre)" value="Rock">Rock</option>
-      <option @click="$emit('genreSelected', selectedGenre)" value="Pop">Pop</option>
-      <option @click="$emit('genreSelected', selectedGenre)" value="Jazz">Jazz</option>
-      <option @click="$emit('genreSelected', selectedGenre)" value="Metal">Metal</option> -->
     </select>
   </div>
 </template>
@@ -22,10 +17,10 @@
 <script>
 export default {
   name: "AlbumFilter",
-  props: ["genres"],
+  props: ["labelFilter", "options"],
   data() {
     return {
-      selectedGenre: "",
+      filterSelection: "",
     };
   },
 };
