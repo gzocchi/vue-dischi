@@ -22,7 +22,7 @@
       <AlbumFilter
         class="m-2"
         labelFilter="Artista"
-        :options="musicArtist"
+        :options="filteredArtist"
         @filter="artistSelected"
       />
     </div>
@@ -68,6 +68,21 @@ export default {
       });
       return newAlbum;
     },
+    filteredArtist() {
+      const artist = [];
+      if (this.currentGenre == "") {
+        return this.musicArtist;
+      }
+      this.albums.forEach((element) => {
+        if (
+          element.genre == this.currentGenre &&
+          !artist.includes(element.author)
+        ) {
+          artist.push(element.author);
+        }
+      });
+      return artist;
+    },
   },
   methods: {
     genreSelected(genre) {
@@ -90,7 +105,6 @@ export default {
             this.musicArtist.push(element.author);
           }
         });
-        // this.$emit('musicGenre', this.musicGenre);
       })
       .catch(function(error) {
         console.log(error);
@@ -106,13 +120,7 @@ main {
   height: $main_h;
 
   .gallery {
-    // align-content: flex-start;
-    // overflow-y: auto;
     height: 100%;
-
-    // .album {
-    //   padding: 10px;
-    // }
   }
 
   // DEBUG
