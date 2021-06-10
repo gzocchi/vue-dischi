@@ -12,15 +12,14 @@
         </div>
       </div>
     </section>
-    <div class="filter_select sticky-top m-2">
+    <div class="filter_select sticky-top d-flex flex-row-reverse">
       <AlbumFilter
-        class="m-2"
         labelFilter="Genere"
         :options="musicGenre"
         @filter="genreSelected"
       />
       <AlbumFilter
-        class="m-2"
+        class="mx-2"
         labelFilter="Artista"
         :options="filteredArtist"
         @filter="artistSelected"
@@ -126,7 +125,8 @@ main {
   // DEBUG
   .filter_select {
     position: absolute;
-    top: $header_h;
+    top: calc(#{$header_h} / 2);
+    transform: translateY(-50%);
     right: 20px;
   }
 }
