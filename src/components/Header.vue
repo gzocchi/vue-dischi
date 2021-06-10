@@ -6,21 +6,20 @@
       <div class="logo">
         <a href="#"></a>
       </div>
-      <div class="flex-shrink-1 d-flex flex-row-reverse filter">
-        <h3 class="d-inline-block m-0 p-2">Filter</h3>
-        <AlbumFilter />
+      <div class="flex-shrink-1 d-flex flex-row-reverse">
+        <!-- <AlbumFilter /> -->
       </div>
     </div>
   </header>
 </template>
 
 <script>
-import AlbumFilter from "./AlbumFilter.vue";
+// import AlbumFilter from "./AlbumFilter.vue";
 
 export default {
   name: "Header",
   components: {
-    AlbumFilter,
+    // AlbumFilter,
   },
 };
 </script>
