@@ -4,13 +4,11 @@
       class="form-select"
       aria-label="Default select example"
       v-model="selectedGenre"
+      @change="$emit('genreSelected', selectedGenre)"
     >
-      <option @click="$emit('genreSelected', selectedGenre)" selected value="">Genere</option>
-      
-      <option 
-      v-for="(gener, index) in genres"
-      :key="index"
-      @click="$emit('genreSelected', selectedGenre)" :value="gener">{{ gener }}
+      <option value="">Genere</option>
+      <option v-for="(gener, index) in genres" :key="index" :value="gener"
+        >{{ gener }}
       </option>
 
       <!-- <option @click="$emit('genreSelected', selectedGenre)" value="Rock">Rock</option>
@@ -24,7 +22,7 @@
 <script>
 export default {
   name: "AlbumFilter",
-  props: [ "genres" ],
+  props: ["genres"],
   data() {
     return {
       selectedGenre: "",
