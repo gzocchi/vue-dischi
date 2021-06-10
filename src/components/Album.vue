@@ -1,9 +1,11 @@
 <template>
-  <div>
+  <div class="p-2">
     <img :src="item.poster" alt="item.title" class="img-fluid" />
     <h3 class="my-3">{{ item.title }}</h3>
-    <p>
-      {{ item.author }} <br />
+    <p class="m-0">
+      {{ item.author }}
+    </p>
+    <p class="m-0">
       {{ item.year }}
     </p>
   </div>
@@ -21,7 +23,7 @@ export default {
 
 div {
   height: 100%;
-  padding: 10px;
+  // padding: 10px;
   background-color: $bg_light;
 
   h3 {

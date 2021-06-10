@@ -1,5 +1,5 @@
 <template>
-  <header class="container-fluid">
+  <header class="container-fluid sticky-top">
     <!-- <img :src="logo" alt="Logo" class="img-fluid"> -->
     <!-- <img src="../assets/img/spotify.png" alt="Logo"> -->
     <div>
@@ -28,7 +28,7 @@ header {
     background-size: 90%;
     background-position: center;
     background-repeat: no-repeat;
-    
+
     a {
       display: block;
       height: 100%;
