@@ -1,8 +1,9 @@
 <template>
   <div class="p-2">
     <img :src="item.poster" alt="item.title" class="img-fluid" />
-    <h3 class="my-3">{{ item.title }}</h3>
-    <p class="m-0">
+    <h3 class="my-3 text-uppercase">{{ item.title }}</h3>
+    <p class="m-0"
+    @click="$emit('filter', item.author)">
       {{ item.author }}
     </p>
     <p class="m-0">
@@ -19,21 +20,23 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "../style/general";
+@import "../assets/style/variables.scss";
 
 div {
   height: 100%;
-  // padding: 10px;
   background-color: $bg_light;
 
   h3 {
     font-weight: 700;
     font-size: 1.2em;
-    text-transform: uppercase;
   }
   p {
     color: rgba($text_color, 0.6);
     line-height: 1.1em;
+
+    &:first-of-type {
+      cursor: pointer;
+    }
   }
 }
 </style>

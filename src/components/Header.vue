@@ -1,6 +1,6 @@
 <template>
-  <header class="container-fluid sticky-top flex-nowrap">
-    <div class="row align-items-center flex-nowrap">
+  <header class="container-fluid sticky-top ">
+    <div class="row align-items-center flex-nowrap px-2">
       <!-- <img :src="logo" alt="Logo" class="img-fluid"> -->
       <!-- <img src="../assets/img/spotify.png" alt="Logo"> -->
       <div class="logo">
@@ -14,18 +14,14 @@
 </template>
 
 <script>
-// import AlbumFilter from "./AlbumFilter.vue";
 
 export default {
   name: "Header",
-  components: {
-    // AlbumFilter,
-  },
 };
 </script>
 
 <style lang="scss" scoped>
-@import "../style/general";
+@import "../assets/style/variables.scss";
 
 header {
   height: $header_h;

@@ -8,17 +8,17 @@
           :key="index"
           :class="{ 'offset-lg-1': index % 5 == 0 }"
         >
-          <Album :item="album" />
+          <Album :item="album" @filter="artistSelected" />
         </div>
       </div>
     </section>
-    <div class="filter_select sticky-top d-flex flex-row-reverse">
-      <AlbumFilter
+    <div class="filter_select sticky-top d-flex ">
+      <FilterSelect
         labelFilter="Genere"
         :options="musicGenre"
         @filter="genreSelected"
       />
-      <AlbumFilter
+      <FilterSelect
         class="mx-2"
         labelFilter="Artista"
         :options="filteredArtist"
@@ -34,13 +34,13 @@ import Album from "./Album.vue";
 import axios from "axios";
 
 // DEBUG
-import AlbumFilter from "./AlbumFilter.vue";
+import FilterSelect from "./FilterSelect.vue";
 
 export default {
   name: "Main",
   components: {
     Album,
-    AlbumFilter,
+    FilterSelect,
   },
   data() {
     return {
@@ -113,7 +113,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "../style/general";
+@import "../assets/style/variables.scss";
 
 main {
   height: $main_h;
