@@ -1,15 +1,15 @@
 <template>
-    <select
-      class="form-select form-select-sm"
-      aria-label=".form-select-sm example"
-      v-model="selectedOption"
-      @change="$emit('filter', selectedOption)"
-    >
-      <option selected value="">{{ labelFilter }}</option>
-      <option v-for="(option, index) in options" :key="index" :value="option">
-        {{ option }}
-      </option>
-    </select>
+  <select
+    class="form-select form-select-sm"
+    aria-label=".form-select-sm example"
+    v-model="selectedOption"
+    @change="$emit('filterSelect', [labelFilter, selectedOption])"
+  >
+    <option selected value="">{{ labelFilter }}</option>
+    <option v-for="(option, index) in options" :key="index" :value="option">
+      {{ option }}
+    </option>
+  </select>
 </template>
 
 <script>
@@ -18,17 +18,26 @@ export default {
   props: {
     labelFilter: {
       type: String,
-      required: true
+      required: true,
     },
     options: {
       type: Array,
-      required: true
-    }
+      required: true,
     },
+    currentOption: {
+      type: String,
+      required: false,
+    },
+  },
   data() {
     return {
       selectedOption: "",
     };
+  },
+  watch: {
+    currentOption(val) {
+      this.selectedOption = val;
+    },
   },
 };
 </script>

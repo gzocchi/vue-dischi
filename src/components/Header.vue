@@ -6,17 +6,32 @@
       <div class="logo">
         <a href="#"></a>
       </div>
-      <div class="flex-shrink-1 d-flex flex-row-reverse">
-        <!-- <AlbumFilter /> -->
-      </div>
+      <!-- <div class="flex-shrink-1 d-flex justify-content-end">
+        <FilterSelect
+          labelFilter="Genere"
+          :options="musicGenre"
+          @filterSelect="$emit(filterSelect)"
+        />
+        <FilterSelect
+          class="mx-2"
+          labelFilter="Artista"
+          :options="filteredArtist"
+          :currentOption="currentArtist"
+          @filterSelect="$emit(filterSelect)"
+        />
+      </div> -->
     </div>
   </header>
 </template>
 
 <script>
+// import FilterSelect from "./FilterSelect.vue";
 
 export default {
   name: "Header",
+  components: {
+    // FilterSelect,
+  },
 };
 </script>
 
@@ -27,7 +42,7 @@ header {
   height: $header_h;
   background-color: $bg_light;
 
-  div.logo {
+  .logo {
     height: $header_h;
     width: $header_h;
     background-image: url(#{$imagePath}/spotify.png);
@@ -40,10 +55,8 @@ header {
       height: 100%;
     }
   }
-
-  // img {
-  //   height: 100%;
-  //   padding: 5px;
-  // }
+  select {
+    max-width: 200px;
+  }
 }
 </style>

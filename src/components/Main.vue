@@ -8,7 +8,7 @@
           :key="index"
           :class="{ 'offset-lg-1': index % 5 == 0 }"
         >
-          <Album :item="album" @filter="artistSelected" />
+          <Album :item="album" />
         </div>
       </div>
     </section>
@@ -16,13 +16,14 @@
       <FilterSelect
         labelFilter="Genere"
         :options="musicGenre"
-        @filter="genreSelected"
+        @filterSelect="filterBy"
       />
       <FilterSelect
         class="mx-2"
         labelFilter="Artista"
         :options="filteredArtist"
-        @filter="artistSelected"
+        :currentOption="currentArtist"
+        @filterSelect="filterBy"
       />
     </div>
   </main>
@@ -84,12 +85,23 @@ export default {
     },
   },
   methods: {
-    genreSelected(genre) {
-      this.currentGenre = genre;
+    filterBy(array) {
+      switch (array[0]) {
+        case "Genere":
+          this.currentGenre = array[1];
+          this.currentArtist = "";
+          break;
+        case "Artista":
+          this.currentArtist = array[1];
+          break;
+      }
     },
-    artistSelected(artist) {
-      this.currentArtist = artist;
-    },
+    // genreSelected(array) {
+    //   this.currentGenre = array[1];
+    // },
+    // artistSelected(array) {
+    //   this.currentArtist = array[1];
+    // },
   },
   created() {
     axios
