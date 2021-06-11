@@ -2,9 +2,7 @@
   <div class="p-2">
     <img :src="item.poster" alt="item.title" class="img-fluid" />
     <h3 class="my-2 text-uppercase">{{ item.title }}</h3>
-    <!-- <p class="m-0"
-    @click="$emit('filter', item.author)"> -->
-    <p class="m-0">
+    <p class="m-0" @click="$emit('filterByAuthor', [`Artista`, item.author])">
       {{ item.author }}
     </p>
     <p class="m-0">
@@ -35,9 +33,13 @@ div {
     color: rgba($text_color, 0.6);
     line-height: 1.2em;
 
-    // &:first-of-type {
-    //   cursor: pointer;
-    // }
+    &:first-of-type {
+      cursor: pointer;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
   }
 }
 </style>

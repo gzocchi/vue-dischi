@@ -8,7 +8,7 @@
           :key="index"
           :class="{ 'offset-lg-1': index % 5 == 0 }"
         >
-          <Album :item="album" />
+          <Album :item="album" @filterByAuthor="filterBy" />
         </div>
       </div>
     </section>
@@ -96,12 +96,6 @@ export default {
           break;
       }
     },
-    // genreSelected(array) {
-    //   this.currentGenre = array[1];
-    // },
-    // artistSelected(array) {
-    //   this.currentArtist = array[1];
-    // },
   },
   created() {
     axios
@@ -116,6 +110,7 @@ export default {
             this.musicArtist.push(element.author);
           }
         });
+        this.$emit("loadingData", false);
       })
       .catch(function(error) {
         console.log(error);
